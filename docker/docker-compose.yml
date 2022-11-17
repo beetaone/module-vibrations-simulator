@@ -1,12 +1,18 @@
 version: "3.0"
 services:
-  boilerplate:
+  vibrations-simulator:
     build:
       context: ../
       dockerfile: docker/Dockerfile
     environment:
-      MODULE_NAME: "boilerplate"
+      MODULE_NAME: "vibrations-simulator"
       MODULE_TYPE: "Input"
       EGRESS_URLS: "https://testdockercompose.free.beeceptor.com"
+      SAMPLE_SIZE: 1024
+      MEASUREMENT_DURATION: 5
+      FREQUENCY_MAGNITUDE: "2000:25, 4000:2"
+      NOISE_PROBABILITY: 0.1
+      NOISE_STANDARD_DEVIATION: 3
+      OUTPUT_LABEL: "vibrations"
     ports:
       - 80:80
