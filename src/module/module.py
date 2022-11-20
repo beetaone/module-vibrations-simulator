@@ -13,6 +13,7 @@ import random
 import threading
 import numpy as np
 import lzma
+import base64
 
 log = getLogger("module")
 
@@ -27,6 +28,8 @@ def module_main():
     Implements module's main logic for inputting data.
     Function description should not be modified.
     """
+
+    global start_time, end_time
 
     log.debug("Inputting data...")
 
@@ -52,11 +55,11 @@ def module_main():
         start_time, end_time = end_time, end_time + PARAMS["MEASUREMENT_DURATION"]
 
         # compress data
-        lzma_superposed = lzma.compress(bytes(superposed_waveform))
+        lzma_superposed = lzma.compress(superposed_waveform.astype(float))
 
         # construct output data
         output_data = {
-            PARAMS["OUTPUT_LABEL"]: lzma_superposed,
+            PARAMS["OUTPUT_LABEL"]: base64.b64encode(lzma_superposed).decode('ascii')
         }
 
         # send data to the next module
