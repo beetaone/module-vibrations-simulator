@@ -1,13 +1,13 @@
-# Module Name
+# Vibrations Simulator
 
 |                |                                       |
 | -------------- | ------------------------------------- |
-| Name           | Module Name                           |
-| Version        | v0.0.0                                |
-| Dockerhub Link | [dockerhub-repo-name](https://hub.docker.com/r/dockerhub-repo-name) |
-| authors        | Author 1, Author 2                    |
+| Name           | Vibrations Simulator                           |
+| Version        | v1.0.0                                |
+| DockerHub | [weevenetwork/vibrations-simulator](https://hub.docker.com/r/weevenetwork/vibrations-simulator) |
+| Authors        | Jakub Grzelak                    |
 
-- [Module Name](#module-name)
+- [Vibrations Simulator](#vibrations-simulator)
   - [Description](#description)
   - [Environment Variables](#environment-variables)
     - [Module Specific](#module-specific)
@@ -18,7 +18,7 @@
 
 ## Description
 
-This is module description. This explains in detail what module does.
+Simulate vibrations waveform data. Provide sample size, measurement duration and frequencies of the base waveforms.
 
 ## Environment Variables
 
@@ -28,9 +28,12 @@ The following module configurations can be provided in a data service designer s
 
 | Name                 | Environment Variables     | type     | Description                                              |
 | -------------------- | ------------------------- | -------- | -------------------------------------------------------- |
-| Environment Var 1    | ENVIRONMENT_VAR_1         | string   | Description what this environment represents.            |
-| Environment Var 2    | ENVIRONMENT_VAR_2         | integer  | Description what this environment represents.            |
-| Environment Var 3    | ENVIRONMENT_VAR_3         | boolean  | Description what this environment represents.            |
+| Sample Size    | SAMPLE_SIZE         | string   | Number of samples taken per second, sample rate of 1024 means that 1024 values of the signal are recorded in one second.            |
+| Measurement Duration    | MEASUREMENT_DURATION         | string  | How often (in seconds) the measurements are simulated. Measurements interval in seconds.            |
+| Frequency Magnitude Pairs    | FREQUENCY_MAGNITUDE         | string  | List of comma (,) separated pairs of elementary waveforms frequencies and magnitudes in the format frequency:magnitude.   |
+| Noise Probability    | NOISE_PROBABILITY         | string   | Probability of noise in the generated data.            |
+| Noise Standard Deviation    | NOISE_STANDARD_DEVIATION         | string   | Standard deviation of the noise randomly generated from the normal distribution.    |
+| Output Label   | OUTPUT_LABEL         | string   | The out label at which data is dispatched.   |
 
 
 ### Set by the weeve Agent on the edge-node
@@ -47,64 +50,17 @@ Other features required for establishing the inter-container communication betwe
 
 ```txt
 requests
-
-dependency-4
-dependency-5
-dependency-6
+numpy
 ```
 
 ## Input
 
-Input to this module is:
-
-* JSON body single object, example:
-
-```json
-{
-    "label-1": 12,
-    "label-2": "speed"
-}
-```
-
-* array of JSON body objects, example:
-
-```json
-[
-    {
-        "label-1": 12,
-        "label-2": "speed"
-    },
-    {
-        "label-1": 15,
-        "label-2": "volume"
-    }
-]
-```
+This module does not take any input.
 
 ## Output
 
-Output of this module is: 
+Output of this module is a compressed array of data points of a simulated waveform.
 
-* JSON body single object, example:
+![Waveform 1](assets-readme/waveform-1.png)
 
-```json
-{
-    "processed-label-1": 14,
-    "processed-label-2": "speed"
-}
-```
-
-* array of JSON body objects, example:
-
-```json
-[
-    {
-        "processed-label-1": 14,
-        "processed-label-2": "speed"
-    },
-    {
-        "processed-label-1": 17,
-        "processed-label-2": "volume"
-    }
-]
-```
+![Waveform 2](assets-readme/waveform-2.png)

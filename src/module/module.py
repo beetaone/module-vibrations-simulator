@@ -12,6 +12,7 @@ from .params import PARAMS
 import random
 import threading
 import numpy as np
+import lzma
 
 log = getLogger("module")
 
@@ -50,9 +51,12 @@ def module_main():
         # shift time window (need it when MEASUREMENT_DURATION is not integer as sine function must shift)
         start_time, end_time = end_time, end_time + PARAMS["MEASUREMENT_DURATION"]
 
+        # compress data
+        lzma_superposed = lzma.compress(bytes(superposed_waveform))
+
         # construct output data
         output_data = {
-            PARAMS["OUTPUT_LABEL"]: superposed_waveform,
+            PARAMS["OUTPUT_LABEL"]: lzma_superposed,
         }
 
         # send data to the next module
