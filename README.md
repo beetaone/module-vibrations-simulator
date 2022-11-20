@@ -59,7 +59,7 @@ This module does not take any input.
 
 ## Output
 
-Output of this module is a compressed array of data points of a simulated waveform.
+Output of this module is bytes object containing compressed array of data points of a simulated waveform.
 
 ![Waveform 1](assets-readme/waveform-1.png)
 
