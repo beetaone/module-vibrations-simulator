@@ -40,7 +40,7 @@ def module_main():
         # create waves
         superposed_waveform = 0
         for wave_spec in waves_freq_mag:
-            waveform = wave_spec[1] * np.sin(2 * np.pi * wave_spec[0] * time)      # clean waveform = magnitude * np.sin(2*pi*frequency*time)
+            waveform = float(wave_spec[1]) * np.sin(2 * np.pi * float(wave_spec[0]) * time)      # clean waveform = magnitude * np.sin(2*pi*frequency*time)
             superposed_waveform += waveform       # add waveform to the superposed wave
 
         # add random noise
