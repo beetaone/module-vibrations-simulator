@@ -17,11 +17,10 @@ import base64
 
 log = getLogger("module")
 
-# extract frequency-magnitude pairs for waveforms
-waves_freq_mag = [freq_mag.strip().split(":") for freq_mag in PARAMS["FREQUENCY_MAGNITUDE"].split(',')]
-
 start_time = 0
 end_time = PARAMS["MEASUREMENT_DURATION"]
+
+noisy = False
 
 def module_main():
     """
@@ -29,7 +28,7 @@ def module_main():
     Function description should not be modified.
     """
 
-    global start_time, end_time
+    global start_time, end_time, noisy
 
     log.debug("Inputting data...")
 
@@ -42,14 +41,22 @@ def module_main():
 
         # create waves
         superposed_waveform = 0
-        for wave_spec in waves_freq_mag:
-            waveform = float(wave_spec[1]) * np.sin(2 * np.pi * float(wave_spec[0]) * time)      # clean waveform = magnitude * np.sin(2*pi*frequency*time)
-            superposed_waveform += waveform       # add waveform to the superposed wave
+        superposed_waveform += PARAMS["MAIN_MAGNITUDE"] * np.sin(2 * np.pi * PARAMS["MAIN_FREQUENCY"] * time)      # clean waveform = magnitude * np.sin(2*pi*frequency*time)
+        superposed_waveform += PARAMS["VIBRATION_MAGNITUDE"] * np.sin(2 * np.pi * PARAMS["VIBRATION_FREQUENCY"] * time)
 
-        # add random noise
-        if random.random() < PARAMS["NOISE_PROBABILITY"]:
-            noise = np.random.normal(0, PARAMS["NOISE_STANDARD_DEVIATION"], N)
-            superposed_waveform += noise
+        if not noisy:
+            # try to start noise
+            if random.random() < PARAMS["NOISE_PROBABILITY"]:
+                # start random noise
+                noisy = True
+                superposed_waveform += np.random.normal(0, PARAMS["NOISE_STANDARD_DEVIATION"], N)
+        else:
+            if random.random() < PARAMS["CONTINUE_PROBABILITY"]:
+                # continue noisy
+                superposed_waveform += np.random.normal(0, PARAMS["NOISE_STANDARD_DEVIATION"], N)
+            else:
+                # do not continue noisy
+                noisy = False
 
         # shift time window (need it when MEASUREMENT_DURATION is not integer as sine function must shift)
         start_time, end_time = end_time, end_time + PARAMS["MEASUREMENT_DURATION"]
