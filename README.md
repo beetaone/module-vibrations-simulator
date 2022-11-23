@@ -1,11 +1,11 @@
 # Vibrations Simulator
 
-|                |                                       |
-| -------------- | ------------------------------------- |
-| Name           | Vibrations Simulator                           |
-| Version        | v1.0.0                                |
+|           |                                                                                                 |
+| --------- | ----------------------------------------------------------------------------------------------- |
+| Name      | Vibrations Simulator                                                                            |
+| Version   | v1.0.0                                                                                          |
 | DockerHub | [weevenetwork/vibrations-simulator](https://hub.docker.com/r/weevenetwork/vibrations-simulator) |
-| Authors        | Jakub Grzelak                    |
+| Authors   | Jakub Grzelak                                                                                   |
 
 - [Vibrations Simulator](#vibrations-simulator)
   - [Description](#description)
@@ -26,29 +26,28 @@ Simulate vibrations waveform data. Provide sample size, measurement duration and
 
 The following module configurations can be provided in a data service designer section on weeve platform:
 
-| Name                 | Environment Variables     | type     | Description                                              |
-| -------------------- | ------------------------- | -------- | -------------------------------------------------------- |
-| Sample Size    | SAMPLE_SIZE         | integer   | Number of samples taken per second, sample rate of 1024 means that 1024 values of the signal are recorded in one second.            |
-| Measurement Duration    | MEASUREMENT_DURATION         | integer  | How long (in seconds) the measurement period lasts and batches the data.    |
-| Main Frequency    | MAIN_FREQUENCY         | float   | Frequency of the main waveform (Hz).           |
-| Main Magnitude    | MAIN_MAGNITUDE         | float   | Magnitude of the main waveform.           |
-| Vibration Frequency    | VIBRATION_FREQUENCY         | float   | Frequency of the vibration waveform (Hz).           |
-| Vibration Magnitude    | VIBRATION_MAGNITUDE         | float   | Magnitude of the vibration waveform.          |
-| Noise Probability    | NOISE_PROBABILITY         | float   | Probability that the signal will start emitting noise at this frequency during any time step.           |
-| Continue Probability    | CONTINUE_PROBABILITY         | float   | Probability that the signal will continue emitting noise at this frequency during any following timestep.         |
-| Noise Standard Deviation    | NOISE_STANDARD_DEVIATION         | float   | Standard deviation of the noise randomly generated from the normal distribution.    |
-| Output Label   | OUTPUT_LABEL         | string   | The out label at which data is dispatched.   |
-
+| Name                     | Environment Variables    | type    | Description                                                                                                              |
+| ------------------------ | ------------------------ | ------- | ------------------------------------------------------------------------------------------------------------------------ |
+| Sample Size              | SAMPLE_SIZE              | integer | Number of samples taken per second, sample rate of 1024 means that 1024 values of the signal are recorded in one second. |
+| Measurement Duration     | MEASUREMENT_DURATION     | integer | How long (in seconds) the measurement period lasts and batches the data.                                                 |
+| Main Frequency           | MAIN_FREQUENCY           | float   | Frequency of the main waveform (Hz).                                                                                     |
+| Main Magnitude           | MAIN_MAGNITUDE           | float   | Magnitude of the main waveform.                                                                                          |
+| Vibration Frequency      | VIBRATION_FREQUENCY      | float   | Frequency of the vibration waveform (Hz).                                                                                |
+| Vibration Magnitude      | VIBRATION_MAGNITUDE      | float   | Magnitude of the vibration waveform.                                                                                     |
+| Noise Probability        | NOISE_PROBABILITY        | float   | Probability that the signal will start emitting noise at this frequency during any time step.                            |
+| Continue Probability     | CONTINUE_PROBABILITY     | float   | Probability that the signal will continue emitting noise at this frequency during any following timestep.                |
+| Noise Standard Deviation | NOISE_STANDARD_DEVIATION | float   | Standard deviation of the noise randomly generated from the normal distribution.                                         |
+| Output Label             | OUTPUT_LABEL             | string  | The out label at which data is dispatched.                                                                               |
 
 ### Set by the weeve Agent on the edge-node
 
 Other features required for establishing the inter-container communication between modules in a data service are set by weeve agent.
 
-| Environment Variables | type   | Description                                    |
-| --------------------- | ------ | ---------------------------------------------- |
-| MODULE_NAME           | string | Name of the module                             |
-| MODULE_TYPE           | string | Type of the module (INGRESS, PROCESS, EGRESS)  |
-| EGRESS_URLS            | string | HTTP ReST endpoint for the next module         |
+| Environment Variables | type   | Description                                   |
+| --------------------- | ------ | --------------------------------------------- |
+| MODULE_NAME           | string | Name of the module                            |
+| MODULE_TYPE           | string | Type of the module (INGRESS, PROCESS, EGRESS) |
+| EGRESS_URLS           | string | HTTP ReST endpoint for the next module        |
 
 ## Dependencies
 
