@@ -34,10 +34,10 @@ The following module configurations can be provided in a data service designer s
 | Main Magnitude           | MAIN_MAGNITUDE           | float   | Magnitude of the main waveform.                                                                                          |
 | Vibration Frequency      | VIBRATION_FREQUENCY      | float   | Frequency of the vibration waveform (Hz).                                                                                |
 | Vibration Magnitude      | VIBRATION_MAGNITUDE      | float   | Magnitude of the vibration waveform.                                                                                     |
-| Noise Probability        | NOISE_PROBABILITY        | float   | Probability that the signal will start emitting noise at this frequency during any time step.                            |
+| Noise Probability        | VIBRATION_PROBABILITY    | float   | Probability that the signal will start a vibration anomaly at this frequency during any time step.                       |
 | Continue Probability     | CONTINUE_PROBABILITY     | float   | Probability that the signal will continue emitting noise at this frequency during any following timestep.                |
-| Noise Standard Deviation | NOISE_STANDARD_DEVIATION | float   | Standard deviation of the noise randomly generated from the normal distribution.                                         |
-| Output Label             | OUTPUT_LABEL             | string  | The out label at which data is dispatched.                                                                               |
+| Noise Standard Deviation | NOISE_STANDARD_DEVIATION | float   | Standard deviation of the noise of the composite signal, randomly generated from the normal distribution.                |
+| Output Label             | OUTPUT_LABEL             | string  | The output label at which data is dispatched.                                                                            |
 
 ### Set by the weeve Agent on the edge-node
 

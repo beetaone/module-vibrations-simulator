@@ -7,7 +7,7 @@ PARAMS = {
     "MAIN_MAGNITUDE": float(getenv("MAIN_MAGNITUDE", 25)),
     "VIBRATION_FREQUENCY": float(getenv("VIBRATION_FREQUENCY", 2000)),
     "VIBRATION_MAGNITUDE": float(getenv("VIBRATION_MAGNITUDE", 25)),
-    "NOISE_PROBABILITY": float(getenv("NOISE_PROBABILITY", 0.1)),               # probability of noise in the generated data
+    "VIBRATION_PROBABILITY": float(getenv("VIBRATION_PROBABILITY", 0.1)),               # probability of noise in the generated data
     "CONTINUE_PROBABILITY": float(getenv("CONTINUE_PROBABILITY", 0.5)),
     "NOISE_STANDARD_DEVIATION": float(getenv("NOISE_STANDARD_DEVIATION",3)),
     "OUTPUT_LABEL": getenv("OUTPUT_LABEL", "vibrations")
