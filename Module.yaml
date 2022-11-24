@@ -1,47 +1,97 @@
-displayName: 'Module Boilerplate'       # Display name for the module that will be displayed in the UI.
-moduleName: 'module-boilerplate'        # Module name that will be used to reference the module, and uniquely identify the module and their versions.
-description: 'This is module boilerplate description.'       # Module description that will be displayed in the UI.
-versionName: 'v1.0.0'                    # Module version name that will be used to reference the module version, and uniquely identify the module version with a common name.
-isPublic: true                          # Boolean value that indicates if the module is Public or Private.
-categories:                             # Array of category that will be used to group the module in the UI.
-  - 'CATEGORY_1'
-  - 'CATEGORY_2'
-type: 'Input'      # Module type (Input, Processing, Output) that will be used to group the module in the UI.
+displayName: 'Vibrations Simulator'
+moduleName: 'vibrations-simulator'
+description: 'Simulate vibrations waveform data.'
+versionName: 'v1.0.0'
+isPublic: true
+categories:
+  - 'Experimental'
+type: 'Input'
 image:
-  name: 'weevenetwork/module-boilerplate'     # Image name from the docker registry.
-  tag: 'latest'                               # Image tag from the docker registry.
-  homepage: 'https://hub.docker.com/weevenetwork/module-boilerplate'      # Image homepage from the docker registry.
-repository: 'https://github.com/weeve-modules/python-ingress-module-boilerplate'     # Repository URL to source code.
-envs:                                   # Array of environment variables that will be used to configure the module. Also used to show related fields on the UI.
-  - name: Setting 1                   # name of the field to be displayed on the UI.
-    key: ENVIRONMENT_1                # key to set in the environment variables.
-    description: Module setting 1     # Description/helper text for the field.
-    value: ''                         # Value to be set in the environment variables.
-    type: 'select'                    # Type of the field. Possible values are: ['text', 'select', 'boolean', 'date', 'time', 'dateTime-local', 'number', 'multiple', 'CSV', 'file']
-    options:                          # Options for the field if it is a select or multiple select. An array of string options
-      - option_A
-      - option_B
-      - option_C
-    dependencies:                     # List of dependencies for the field. This field is only displayed if all the dependencies are met. If
-      - key:                          # key of the dependency
-        value:                        # value of the dependency
-  - name: Setting 2
-    key: ENVIRONMENT_2
-    description: Module setting 2
-    value: ''
+  name: 'weevenetwork/vibrations-simulator'
+  tag: 'v1.0.0'
+  homepage: 'https://hub.docker.com/r/weevenetwork/vibrations-simulator'
+repository: 'https://github.com/weeve-modules/vibrations-simulator'
+envs:
+  - name: Sample Size
+    key: SAMPLE_SIZE
+    description: Number of samples taken per second, sample rate of 1024 means that 1024 values of the signal are recorded in one second.
+    value: '1024'
     type: 'number'
-    dependencies:
-      - key: ENVIRONMENT_1
-        value: option_B
-ports:                                  # Array of ports that will be exposed by the module.
-  - container: 8080                     # Port number from the container.
-    host: 8080                          # Port number to map on the host.
-mounts:
-  - container: '/data'                  # Mount path from the container.
-    host: '/data'                       # Mount path to map on the host.
+    options: []
+    dependencies: []
+  - name: Measurement Duration
+    key: MEASUREMENT_DURATION
+    description: How long (in seconds) the measurement period lasts and batches the data.
+    value: '5'
+    type: 'number'
+    options: []
+    dependencies: []
+  - name: Main Frequency
+    key: MAIN_FREQUENCY
+    description: 'Frequency of the main waveform (Hz).'
+    value: '2000'
+    type: 'number'
+    options: []
+    dependencies: []
+  - name: Main Magnitude
+    key: MAIN_MAGNITUDE
+    description: 'Magnitude of the main waveform.'
+    value: '25'
+    type: 'number'
+    options: []
+    dependencies: []
+  - name: Vibration Frequency
+    key: VIBRATION_FREQUENCY
+    description: 'Frequency of the vibration waveform (Hz).'
+    value: '4000'
+    type: 'number'
+    options: []
+    dependencies: []
+  - name: Vibration Magnitude
+    key: VIBRATION_MAGNITUDE
+    description: 'Magnitude of the vibration waveform.'
+    value: '2'
+    type: 'number'
+    options: []
+    dependencies: []
+  - name: Noise Probability
+    key: NOISE_PROBABILITY
+    description: Probability that the signal will start emitting noise at this frequency during any time step.
+    value: '0.1'
+    type: 'number'
+    options: []
+    dependencies: []
+  - name: Continue Probability
+    key: CONTINUE_PROBABILITY
+    description: Probability that the signal will continue emitting noise at this frequency during any following timestep.
+    value: '0.5'
+    type: 'number'
+    options: []
+    dependencies: []
+  - name: Noise Standard Deviation
+    key: NOISE_STANDARD_DEVIATION
+    description: Standard deviation of the noise randomly generated from the normal distribution.
+    value: '3'
+    type: 'number'
+    options: []
+    dependencies: []
+  - name: Output Label
+    key: OUTPUT_LABEL
+    description: The out label at which data is dispatched.
+    value: 'vibrations'
+    type: 'text'
+    options: []
+    dependencies: []
+ports: []
+envPorts: []
+mounts: []
+envMounts: []
+devices: []
+envDevices: []
 tags:                                   # Array of tags.
   - 'Python'
   - 'Input'
-  - 'Boilerplate'
-  - 'Boilerplate 1.0.0'
+  - 'Vibrations'
+  - 'Simulator'
+  - 'waveform'
 icon: 'https://some.url/to/icon.png'    # Icon URL that will be displayed in the UI.
