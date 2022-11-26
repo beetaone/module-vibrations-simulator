@@ -65,22 +65,6 @@ def module_main():
 
         composite_signal += np.random.normal(0, PARAMS["NOISE_STANDARD_DEVIATION"], N)
 
-        # superposed_waveform += PARAMS["VIBRATION_MAGNITUDE"] * np.sin(2 * np.pi * PARAMS["VIBRATION_FREQUENCY"] * time)
-
-        # if not noisy:
-        #     # try to start noise
-        #     if random.random() < PARAMS["NOISE_PROBABILITY"]:
-        #         # start random noise
-        #         noisy = True
-        #         superposed_waveform += np.random.normal(0, PARAMS["NOISE_STANDARD_DEVIATION"], N)
-        # else:
-        #     if random.random() < PARAMS["CONTINUE_PROBABILITY"]:
-        #         # continue noisy
-        #         superposed_waveform += np.random.normal(0, PARAMS["NOISE_STANDARD_DEVIATION"], N)
-        #     else:
-        #         # do not continue noisy
-        #         noisy = False
-
         # shift time window (need it when MEASUREMENT_DURATION is not integer as sine function must shift)
         start_time, end_time = end_time, end_time + PARAMS["MEASUREMENT_DURATION"]
 
