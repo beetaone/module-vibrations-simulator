@@ -54,8 +54,8 @@ envs:
     type: 'number'
     options: []
     dependencies: []
-  - name: Noise Probability
-    key: NOISE_PROBABILITY
+  - name: Vibration Probability
+    key: VIBRATION_PROBABILITY
     description: Probability that the signal will start emitting noise at this frequency during any time step.
     value: '0.1'
     type: 'number'
