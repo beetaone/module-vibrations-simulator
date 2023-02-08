@@ -1,10 +1,11 @@
-FROM python:3.8-slim
+FROM debian:bullseye
 
 # copy docker-entrypoint and requirements to initialize multi-stage build
-COPY ./docker/docker-entrypoint.sh ./requirements.txt /app/
+COPY ./docker/docker-entrypoint.sh /app/
 
 # implement multi-stage build to leverage build cache (does not re-install packages when code changes)
-RUN pip install -r /app/requirements.txt
+RUN apt-get update \
+    && apt-get install -y --no-install-recommends python3 python3-numpy python3-requests
 
 # copy source code
 COPY ./src /app/src

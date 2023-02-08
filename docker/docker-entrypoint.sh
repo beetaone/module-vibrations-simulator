@@ -29,4 +29,4 @@ fi
 echo "[ENTRYPOINT] Environment validated."
 
 # CALL THE MAIN SCRIPT
-python /app/src/main.py
+python3 /app/src/main.py
