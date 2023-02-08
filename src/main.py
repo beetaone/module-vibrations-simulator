@@ -10,6 +10,7 @@ from module.module import module_main
 setup_logging()
 log = getLogger("main")
 
+
 def main():
     log.info(
         "%s running with end-point set to %s",
@@ -18,6 +19,7 @@ def main():
     )
 
     module_main()
+
 
 if __name__ == "__main__":
     main()

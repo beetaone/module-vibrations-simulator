@@ -40,22 +40,32 @@ def module_main():
         threading.Timer(PARAMS["MEASUREMENT_DURATION"], module_main).start()
 
         # Generate the time array
-        N = (end_time - start_time) * PARAMS["SAMPLE_SIZE"]             # number of samples during the measurement (number of data)
-        time = np.linspace(start_time, end_time, N, endpoint=False)     # measurement timestamps (time domain signal)
+        N = (end_time - start_time) * PARAMS[
+            "SAMPLE_SIZE"
+        ]  # number of samples during the measurement (number of data)
+        time = np.linspace(
+            start_time, end_time, N, endpoint=False
+        )  # measurement timestamps (time domain signal)
 
         # create the main signal
-        main_signal = PARAMS["MAIN_MAGNITUDE"] * np.sin(2 * np.pi * PARAMS["MAIN_FREQUENCY"] * time)      # clean waveform = magnitude * np.sin(2*pi*frequency*time)
+        main_signal = PARAMS["MAIN_MAGNITUDE"] * np.sin(
+            2 * np.pi * PARAMS["MAIN_FREQUENCY"] * time
+        )  # clean waveform = magnitude * np.sin(2*pi*frequency*time)
 
         # create the noise
 
         if not VIBRATION and random.random() < PARAMS["VIBRATION_PROBABILITY"]:
             # We start vibration signal
-            vibration_signal = PARAMS["VIBRATION_MAGNITUDE"] * np.sin(2 * np.pi * PARAMS["VIBRATION_FREQUENCY"] * time)
+            vibration_signal = PARAMS["VIBRATION_MAGNITUDE"] * np.sin(
+                2 * np.pi * PARAMS["VIBRATION_FREQUENCY"] * time
+            )
             composite_signal = main_signal + vibration_signal
             VIBRATION = True
         elif VIBRATION and random.random() < PARAMS["CONTINUE_PROBABILITY"]:
             # We continue vibration signal
-            vibration_signal = PARAMS["VIBRATION_MAGNITUDE"] * np.sin(2 * np.pi * PARAMS["VIBRATION_FREQUENCY"] * time)
+            vibration_signal = PARAMS["VIBRATION_MAGNITUDE"] * np.sin(
+                2 * np.pi * PARAMS["VIBRATION_FREQUENCY"] * time
+            )
             composite_signal = main_signal + vibration_signal
             VIBRATION = True
         else:
@@ -73,7 +83,7 @@ def module_main():
 
         # construct output data
         output_data = {
-            PARAMS["OUTPUT_LABEL"]: base64.b64encode(lzma_superposed).decode('ascii')
+            PARAMS["OUTPUT_LABEL"]: base64.b64encode(lzma_superposed).decode("ascii")
         }
 
         # send data to the next module
