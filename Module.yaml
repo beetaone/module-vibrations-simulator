@@ -1,14 +1,14 @@
 displayName: 'Vibrations Simulator'
 moduleName: 'vibrations-simulator'
 description: 'Simulate vibrations waveform data.'
-versionName: 'v1.0.0'
+versionName: 'v1.0.1'
 isPublic: true
 categories:
   - 'Experimental'
 type: 'Input'
 image:
   name: 'weevenetwork/vibrations-simulator'
-  tag: 'v1.0.0'
+  tag: 'v1.0.1'
   homepage: 'https://hub.docker.com/r/weevenetwork/vibrations-simulator'
 repository: 'https://github.com/weeve-modules/vibrations-simulator'
 envs:

@@ -3,7 +3,7 @@
 |           |                                                                                                 |
 | --------- | ----------------------------------------------------------------------------------------------- |
 | Name      | Vibrations Simulator                                                                            |
-| Version   | v1.0.0                                                                                          |
+| Version   | v1.0.1                                                                                          |
 | DockerHub | [weevenetwork/vibrations-simulator](https://hub.docker.com/r/weevenetwork/vibrations-simulator) |
 | Authors   | Jakub Grzelak                                                                                   |
 
