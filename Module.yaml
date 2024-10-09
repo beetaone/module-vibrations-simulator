@@ -7,10 +7,10 @@ categories:
   - 'Experimental'
 type: 'Input'
 image:
-  name: 'weevenetwork/vibrations-simulator'
+  name: 'beetaone/vibrations-simulator'
   tag: 'v1.0.1'
-  homepage: 'https://hub.docker.com/r/weevenetwork/vibrations-simulator'
-repository: 'https://github.com/weeve-modules/vibrations-simulator'
+  homepage: 'https://hub.docker.com/r/beetaone/vibrations-simulator'
+repository: 'https://github.com/beetaone/module-vibrations-simulator'
 envs:
   - name: Sample Size
     key: SAMPLE_SIZE
@@ -94,4 +94,4 @@ tags:                                   # Array of tags.
   - 'Vibrations'
   - 'Simulator'
   - 'waveform'
-icon: 'https://icons-020-demo.s3.eu-central-1.amazonaws.com/mi_vibrations_simulator_input.png'    # Icon URL that will be displayed in the UI.
+icon: 'https://icons-020-demo.s3.eu-central-1.amazonaws.com/mi_vibrations_simulator_input.png'    # Icon URL that will be displayed in the UI.he UI.

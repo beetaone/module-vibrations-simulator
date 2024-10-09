@@ -1,6 +1,6 @@
 SHELL := /bin/bash # to enable source command in run_app
 
-MODULE=weevenetwork/vibrations-simulator
+MODULE=beetaone/vibrations-simulator
 VERSION_NAME=v1.0.1
 
 lint:
@@ -43,4 +43,4 @@ run_listener:
 	-e LOG_HTTP_HEADERS=true \
 	--name listener \
 	jmalloc/echo-server
-.phony: run_listener
+.phony: run_listenerener
